@@ -1,6 +1,0 @@
-{
-  "Hemoglobin": { "unit": "g/dL", "typical": [12.0, 16.0] },
-  "WBC": { "unit": "10^9/L", "typical": [4.0, 11.0] },
-  "Platelets": { "unit": "10^9/L", "typical": [150, 450] },
-  "Glucose (Fasting)": { "unit": "mg/dL", "typical": [70, 99] }
-}
