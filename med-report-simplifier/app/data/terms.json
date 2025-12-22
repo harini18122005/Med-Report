@@ -1,0 +1,26 @@
+{
+  "Hemoglobin": {
+    "section": "Hematology",
+    "sectionTitle": "Your Blood Cells",
+    "simple": "Hemoglobin carries oxygen in your blood.",
+    "label": "Hemoglobin"
+  },
+  "WBC": {
+    "section": "Hematology",
+    "sectionTitle": "Your Blood Cells",
+    "simple": "White blood cells help fight infections.",
+    "label": "White Blood Cells (WBC)"
+  },
+  "Platelets": {
+    "section": "Hematology",
+    "sectionTitle": "Your Blood Cells",
+    "simple": "Platelets help your blood to clot when needed.",
+    "label": "Platelets"
+  },
+  "Glucose (Fasting)": {
+    "section": "Biochemistry",
+    "sectionTitle": "Sugar & Minerals",
+    "simple": "Fasting glucose shows sugar level after not eating.",
+    "label": "Fasting Glucose"
+  }
+}

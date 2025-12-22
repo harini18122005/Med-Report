@@ -78,4 +78,39 @@ Generates smart questions such as:
 ---
 
 ### 📊 Numerical Visualization
-- Extracts numerical values like:
+ - Extracts numerical values like:
+
+---
+
+## 🚀 Quickstart
+
+### Run locally
+
+1. Install dependencies and start the dev server:
+
+```bash
+cd med-report-simplifier
+npm install
+npm run dev
+```
+
+2. Open http://localhost:3000
+3. Paste sample input:
+
+```
+Hemoglobin: 12.8 g/dL
+WBC: 6.1 10^9/L
+Platelets: 220 10^9/L
+Glucose (Fasting): 92 mg/dL
+```
+
+4. Choose explanation level and click “Simplify”.
+
+### What’s happening under the hood
+- API route: med-report-simplifier/app/api/simplify/route.ts
+- Term definitions: med-report-simplifier/app/data/terms.json
+- Typical ranges: med-report-simplifier/app/data/ranges.json
+- UI: med-report-simplifier/app/page.tsx
+
+### Safety Notice
+This tool simplifies report language for understanding only. It does not diagnose conditions. Please consult your doctor for medical advice.
