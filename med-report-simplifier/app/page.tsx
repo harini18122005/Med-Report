@@ -68,7 +68,37 @@ export default function Home() {
         </p>
 
         <div className="mt-6 grid gap-4">
-          <label className="block text-sm font-medium">Paste your report</label>
+          <div className="flex items-center justify-between">
+            <label className="block text-sm font-medium">Paste your report</label>
+            <button
+              type="button"
+              onClick={() =>
+                setText(
+                  [
+                    "Hemoglobin: 12.8 g/dL",
+                    "WBC: 6.1 10^9/L",
+                    "Platelets: 220 10^9/L",
+                    "Glucose (Fasting): 92 mg/dL",
+                    "Total Cholesterol: 182 mg/dL",
+                    "LDL: 110 mg/dL",
+                    "HDL: 50 mg/dL",
+                    "Triglycerides: 140 mg/dL",
+                    "ALT: 23 U/L",
+                    "AST: 19 U/L",
+                    "TSH: 2.1 mIU/L",
+                    "Creatinine: 0.9 mg/dL",
+                    "BUN: 14 mg/dL",
+                    "Sodium: 140 mmol/L",
+                    "Potassium: 4.2 mmol/L",
+                    "Calcium: 9.2 mg/dL",
+                  ].join("\n")
+                )
+              }
+              className="text-xs px-2 py-1 rounded-md border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900"
+            >
+              Use sample
+            </button>
+          </div>
           <textarea
             className="w-full h-40 rounded-md border border-zinc-300 bg-white dark:bg-zinc-900 p-3 text-sm"
             placeholder={`Example:\nHemoglobin: 12.8 g/dL\nWBC: 6.1 10^9/L\nPlatelets: 220 10^9/L\nGlucose (Fasting): 92 mg/dL`}

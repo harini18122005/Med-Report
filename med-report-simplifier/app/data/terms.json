@@ -22,5 +22,77 @@
     "sectionTitle": "Sugar & Minerals",
     "simple": "Fasting glucose shows sugar level after not eating.",
     "label": "Fasting Glucose"
+  },
+  "Total Cholesterol": {
+    "section": "Lipids",
+    "sectionTitle": "Lipids & Heart Health",
+    "simple": "Total cholesterol is the sum of fats in your blood.",
+    "label": "Total Cholesterol"
+  },
+  "LDL": {
+    "section": "Lipids",
+    "sectionTitle": "Lipids & Heart Health",
+    "simple": "LDL is the 'bad' cholesterol that can build up in arteries.",
+    "label": "LDL Cholesterol"
+  },
+  "HDL": {
+    "section": "Lipids",
+    "sectionTitle": "Lipids & Heart Health",
+    "simple": "HDL is the 'good' cholesterol that helps remove extra fat.",
+    "label": "HDL Cholesterol"
+  },
+  "Triglycerides": {
+    "section": "Lipids",
+    "sectionTitle": "Lipids & Heart Health",
+    "simple": "Triglycerides are another type of fat in your blood.",
+    "label": "Triglycerides"
+  },
+  "ALT": {
+    "section": "Liver",
+    "sectionTitle": "Liver & Enzymes",
+    "simple": "ALT is a liver enzyme; higher levels can mean irritation.",
+    "label": "ALT (Alanine transaminase)"
+  },
+  "AST": {
+    "section": "Liver",
+    "sectionTitle": "Liver & Enzymes",
+    "simple": "AST is a liver enzyme; checked with ALT for context.",
+    "label": "AST (Aspartate transaminase)"
+  },
+  "TSH": {
+    "section": "Thyroid",
+    "sectionTitle": "Thyroid Function",
+    "simple": "TSH is a signal from the brain that guides thyroid activity.",
+    "label": "TSH"
+  },
+  "Creatinine": {
+    "section": "Kidney",
+    "sectionTitle": "Kidney & Electrolytes",
+    "simple": "Creatinine helps estimate how well your kidneys filter blood.",
+    "label": "Creatinine"
+  },
+  "BUN": {
+    "section": "Kidney",
+    "sectionTitle": "Kidney & Electrolytes",
+    "simple": "BUN is a waste product; kidneys remove it from blood.",
+    "label": "BUN (Blood Urea Nitrogen)"
+  },
+  "Sodium": {
+    "section": "Biochemistry",
+    "sectionTitle": "Sugar & Minerals",
+    "simple": "Sodium is a mineral that helps with fluid balance.",
+    "label": "Sodium"
+  },
+  "Potassium": {
+    "section": "Biochemistry",
+    "sectionTitle": "Sugar & Minerals",
+    "simple": "Potassium supports muscles and heart rhythm.",
+    "label": "Potassium"
+  },
+  "Calcium": {
+    "section": "Biochemistry",
+    "sectionTitle": "Sugar & Minerals",
+    "simple": "Calcium builds bones and supports nerves and muscles.",
+    "label": "Calcium"
   }
 }

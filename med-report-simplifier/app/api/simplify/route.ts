@@ -20,6 +20,22 @@ const ranges: Ranges = {
   "WBC": { unit: "10^9/L", typical: [4.0, 11.0] },
   "Platelets": { unit: "10^9/L", typical: [150, 450] },
   "Glucose (Fasting)": { unit: "mg/dL", typical: [70, 99] },
+  // Lipids
+  "Total Cholesterol": { unit: "mg/dL", typical: [125, 200] },
+  "LDL": { unit: "mg/dL", typical: [0, 100] },
+  "HDL": { unit: "mg/dL", typical: [40, 60] },
+  "Triglycerides": { unit: "mg/dL", typical: [0, 150] },
+  // Liver enzymes
+  "ALT": { unit: "U/L", typical: [7, 56] },
+  "AST": { unit: "U/L", typical: [10, 40] },
+  // Thyroid
+  "TSH": { unit: "mIU/L", typical: [0.4, 4.5] },
+  // Kidney & electrolytes
+  "Creatinine": { unit: "mg/dL", typical: [0.6, 1.3] },
+  "BUN": { unit: "mg/dL", typical: [7, 20] },
+  "Sodium": { unit: "mmol/L", typical: [135, 145] },
+  "Potassium": { unit: "mmol/L", typical: [3.5, 5.1] },
+  "Calcium": { unit: "mg/dL", typical: [8.5, 10.2] },
 };
 
 function compare(term: string, value?: number): {
