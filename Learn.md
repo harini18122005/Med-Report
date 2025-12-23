@@ -76,6 +76,26 @@ Glucose (Fasting): 92 mg/dL
 ### Deployment note (Vercel)
 - Fixed `vercel.json` to a minimal Next.js config and ensured the project uses `Root Directory: med-report-simplifier` in Vercel settings. If a 404 appears, check the root directory setting and redeploy.
 
+## Deployment & Live URL
+
+### ✅ Live App
+**URL:** https://med-report-simplifier.vercel.app/
+
+**How to use:**
+1. Paste your medical report text (or click "Use sample" for a demo).
+2. Choose explanation level: Patient-friendly or Explain like I'm a child.
+3. Optionally enable "Use AI assistant" (requires OPENAI_API_KEY in Vercel env).
+4. Click "Simplify" to see results grouped by section, typical ranges, and doctor questions.
+5. Results include a disclaimer that this is for understanding only, not diagnosis.
+
+**Sample labs covered:**
+- Hematology: Hemoglobin, WBC, Platelets
+- Biochemistry: Glucose, Sodium, Potassium, Calcium
+- Lipids: Total Cholesterol, LDL, HDL, Triglycerides
+- Liver: ALT, AST
+- Thyroid: TSH
+- Kidney: Creatinine, BUN
+
 ### Try the new sample
 You can click "Use sample" in the UI, or paste this:
 ```
