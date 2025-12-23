@@ -21,6 +21,8 @@ type ApiResponse = {
   sections: ApiSection[];
   questions: string[];
   disclaimer: string;
+  aiUsed?: boolean;
+  aiNarrative?: string;
 };
 
 export default function Home() {
@@ -30,6 +32,8 @@ export default function Home() {
   const [data, setData] = useState<ApiResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  const [useAi, setUseAi] = useState<boolean>(false);
+
   async function onSubmit() {
     setLoading(true);
     setError(null);
@@ -38,7 +42,7 @@ export default function Home() {
       const res = await fetch("/api/simplify", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text, level }),
+        body: JSON.stringify({ text, level, useAi }),
       });
       if (!res.ok) {
         const msg = await res.text();
@@ -105,6 +109,22 @@ export default function Home() {
           </button>
         </div>
 
+        <div className="mt-2 flex items-center gap-3">
+          <label className="flex items-center gap-2 text-sm">
+            <input
+              type="checkbox"
+              checked={useAi}
+              onChange={(e) => setUseAi(e.target.checked)}
+            />
+            Use AI assistant (if enabled)
+          </label>
+          {useAi && (
+            <span className="text-xs text-zinc-600 dark:text-zinc-400">
+              Requires OPENAI_API_KEY in environment
+            </span>
+          )}
+        </div>
+
         {error && (
           <div className="mt-4 rounded-md border border-red-300 bg-red-50 p-3 text-sm text-red-700 dark:border-red-700 dark:bg-red-900/20 dark:text-red-300">
             {error}
@@ -113,6 +133,12 @@ export default function Home() {
 
         {data && (
           <section className="mt-8 grid gap-6">
+            {data.aiUsed && data.aiNarrative && (
+              <div className="rounded-lg border border-emerald-200 dark:border-emerald-900 p-4 bg-emerald-50 dark:bg-emerald-900/20">
+                <h2 className="text-xl font-medium">AI Summary</h2>
+                <p className="mt-2 whitespace-pre-wrap text-sm text-emerald-900 dark:text-emerald-200">{data.aiNarrative}</p>
+              </div>
+            )}
             {data.sections.map((sec) => (
               <div key={sec.section} className="rounded-lg border border-zinc-200 dark:border-zinc-800 p-4">
                 <h2 className="text-xl font-medium">{sec.sectionTitle}</h2>

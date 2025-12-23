@@ -106,10 +106,16 @@ Glucose (Fasting): 92 mg/dL
 
 4. Choose explanation level and click “Simplify”.
 
+### Optional: Enable AI Assistant
+
+- Copy `.env.example` to `.env` inside `med-report-simplifier` and set `OPENAI_API_KEY`.
+- In the UI, check "Use AI assistant" to include an AI-written friendly summary and tailored questions.
+- The app works without AI using safe rule-based explanations and typical ranges.
+
 ### What’s happening under the hood
 - API route: med-report-simplifier/app/api/simplify/route.ts
 - Term definitions: med-report-simplifier/app/data/terms.json
-- Typical ranges: med-report-simplifier/app/data/ranges.json
+- Typical ranges: defined in the API for now (can be moved to a JSON file)
 - UI: med-report-simplifier/app/page.tsx
 
 ### Safety Notice
