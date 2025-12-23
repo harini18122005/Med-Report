@@ -1,7 +1,7 @@
 {
-  "buildCommand": "cd med-report-simplifier && npm install && npm run build",
-  "outputDirectory": "med-report-simplifier/.next",
-  "rootDirectory": "med-report-simplifier",
+  "framework": "nextjs",
+  "installCommand": "npm install",
+  "buildCommand": "npm run build",
   "env": {
     "OPENAI_API_KEY": "@openai_api_key"
   }
