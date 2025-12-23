@@ -65,6 +65,17 @@ Glucose (Fasting): 92 mg/dL
 - UI improvement: Added a "Use sample" button to prefill a comprehensive report for quick testing.
 - Verified production build still succeeds.
 
+### Testing added
+- Refactored core logic into `app/lib/analyze.ts` (ranges, `parseLines()`, `compare()`).
+- Added unit tests with Vitest: `app/lib/analyze.test.ts`.
+- Scripts:
+	- `npm run test` → runs once
+	- `npm run test:watch` → watch mode
+- Result: All tests passing locally.
+
+### Deployment note (Vercel)
+- Fixed `vercel.json` to a minimal Next.js config and ensured the project uses `Root Directory: med-report-simplifier` in Vercel settings. If a 404 appears, check the root directory setting and redeploy.
+
 ### Try the new sample
 You can click "Use sample" in the UI, or paste this:
 ```
