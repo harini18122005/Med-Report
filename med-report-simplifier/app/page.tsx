@@ -88,15 +88,15 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-blue-900">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16 px-6 shadow-2xl">
+      <div className="bg-gradient-to-r from-white via-blue-50 to-purple-50 text-gray-900 py-16 px-6 shadow-sm border-b border-gray-100">
         <div className="mx-auto max-w-4xl">
-          <div className="inline-block px-4 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium mb-4">
+          <div className="inline-block px-4 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium mb-4">
             ✨ Powered by AI
           </div>
-          <h1 className="text-5xl sm:text-6xl font-bold mb-4 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
+          <h1 className="text-5xl sm:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-700 to-purple-700 bg-clip-text text-transparent">
             Med‑Report Simplifier
           </h1>
-          <p className="text-lg text-blue-100 max-w-2xl">
+          <p className="text-lg text-gray-600 max-w-2xl">
             Transform complex medical reports into clear, understandable language. 
             Get instant insights and doctor-ready questions.
           </p>
