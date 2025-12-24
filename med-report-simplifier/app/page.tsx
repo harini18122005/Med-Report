@@ -86,41 +86,41 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-cyan-50 to-teal-50 dark:from-gray-900 dark:via-gray-900 dark:to-blue-900">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-cyan-50 to-teal-50 dark:from-gray-900 dark:via-gray-900 dark:to-blue-900 transition-colors duration-500 animate-in fade-in">
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-cyan-100 text-gray-900 py-16 px-6 shadow-lg border-b border-cyan-200">
+      <div className="relative overflow-hidden bg-cyan-100 text-gray-900 py-12 sm:py-16 md:py-20 px-4 sm:px-6 shadow-lg border-b border-cyan-200 animate-in slide-in-from-top duration-700">
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-100 via-blue-100 to-teal-100 opacity-70" aria-hidden="true" />
         <div className="relative mx-auto max-w-4xl">
-          <div className="inline-block px-4 py-1 bg-white/90 backdrop-blur-sm text-blue-700 rounded-full text-sm font-medium mb-4 shadow-sm">
+          <div className="inline-block px-3 sm:px-4 py-1 bg-white/90 backdrop-blur-sm text-blue-700 rounded-full text-xs sm:text-sm font-medium mb-3 sm:mb-4 shadow-sm">
             ✨ Powered by AI
           </div>
-          <h1 className="text-5xl sm:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-700 to-purple-700 bg-clip-text text-transparent">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-blue-700 to-purple-700 bg-clip-text text-transparent leading-tight">
             Med‑Report Simplifier
           </h1>
-          <p className="text-lg text-gray-700 max-w-2xl">
+          <p className="text-base sm:text-lg text-gray-700 max-w-2xl leading-relaxed">
             Transform complex medical reports into clear, understandable language. 
             Get instant insights and doctor-ready questions.
           </p>
         </div>
       </div>
 
-      <main className="mx-auto max-w-4xl -mt-8 px-6 pb-16">
+      <main className="mx-auto max-w-4xl -mt-6 sm:-mt-8 px-4 sm:px-6 pb-12 sm:pb-16 md:pb-20">
         {/* Disclaimer Card */}
-        <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-2xl p-4 mb-8 shadow-lg backdrop-blur-sm">
-          <p className="text-sm text-amber-800 dark:text-amber-200 flex items-start gap-2">
-            <span className="text-lg">⚕️</span>
+        <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-xl sm:rounded-2xl p-3 sm:p-4 mb-6 sm:mb-8 shadow-lg backdrop-blur-sm animate-in fade-in slide-in-from-top duration-500 delay-100" role="alert">
+          <p className="text-xs sm:text-sm text-amber-800 dark:text-amber-200 flex items-start gap-2">
+            <span className="text-lg flex-shrink-0" aria-hidden="true">⚕️</span>
             <span>For understanding only. Not medical advice. Always consult your doctor.</span>
           </p>
         </div>
 
         {/* Input Card */}
-        <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-8 mb-8 border border-gray-100 dark:border-gray-700">
-          <div className="grid gap-6">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-6 md:p-8 mb-6 sm:mb-8 border border-gray-100 dark:border-gray-700 animate-in fade-in slide-in-from-top duration-500 delay-200 hover:shadow-3xl transition-shadow">
+          <div className="grid gap-4 sm:gap-6">
             <div>
-              <div className="flex items-center justify-between mb-3">
-                <label className="text-lg font-semibold text-gray-900 dark:text-white flex items-center gap-2">
-                  <span className="text-2xl">📋</span>
-                  Paste Your Report
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-3 mb-3 sm:mb-4">
+                <label className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white flex items-center gap-2">
+                  <span className="text-2xl" aria-hidden="true">📋</span>
+                  <span>Paste Your Report</span>
                 </label>
                 <button
                   type="button"
@@ -133,13 +133,14 @@ export default function Home() {
                       "Sodium: 140 mmol/L", "Potassium: 4.2 mmol/L", "Calcium: 9.2 mg/dL",
                     ].join("\n"))
                   }
-                  className="text-sm px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:from-blue-600 hover:to-purple-600 transition-all shadow-md hover:shadow-lg transform hover:scale-105"
+                  className="text-xs sm:text-sm px-3 sm:px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:from-blue-600 hover:to-purple-600 active:scale-95 transition-all shadow-md hover:shadow-lg transform hover:scale-105 whitespace-nowrap font-medium"
+                  aria-label="Load sample medical report"
                 >
                   ✨ Try Sample
                 </button>
               </div>
               <textarea
-                className="w-full h-48 rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 p-4 text-base focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 dark:focus:ring-blue-900 transition-all resize-none"
+                className="w-full h-40 sm:h-48 rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 p-3 sm:p-4 text-sm sm:text-base focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 dark:focus:ring-blue-900 transition-all resize-none"
                 placeholder="Example:
 Hemoglobin: 12.8 g/dL
 WBC: 6.1 10^9/L
