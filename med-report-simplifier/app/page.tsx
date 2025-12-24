@@ -31,8 +31,19 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<ApiResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
 
   const [useAi, setUseAi] = useState<boolean>(false);
+
+  async function copyToClipboard(text: string) {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      alert("Failed to copy");
+    }
+  }
 
   async function onSubmit() {
     setLoading(true);
@@ -100,11 +111,13 @@ export default function Home() {
             </button>
           </div>
           <textarea
-            className="w-full h-40 rounded-md border border-zinc-300 bg-white dark:bg-zinc-900 p-3 text-sm"
+            className="w-full h-40 rounded-md border border-zinc-300 bg-white dark:bg-zinc-900 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder={`Example:\nHemoglobin: 12.8 g/dL\nWBC: 6.1 10^9/L\nPlatelets: 220 10^9/L\nGlucose (Fasting): 92 mg/dL`}
             value={text}
             onChange={(e) => setText(e.target.value)}
+            aria-label="Paste your medical report"
           />
+          {text && <p className="text-xs text-zinc-500">Characters: {text.length}</p>}
 
           <div className="flex items-center gap-4">
             <span className="text-sm font-medium">Explain level</span>
@@ -133,11 +146,25 @@ export default function Home() {
           <button
             onClick={onSubmit}
             disabled={loading || !text.trim()}
-            className="inline-flex items-center justify-center rounded-md bg-black text-white dark:bg-white dark:text-black px-4 py-2 text-sm disabled:opacity-50"
+            className="inline-flex items-center justify-center gap-2 rounded-md bg-black text-white dark:bg-white dark:text-black px-4 py-2 text-sm disabled:opacity-50 hover:opacity-90 transition-opacity"
+            aria-label={loading ? "Simplifying report" : "Simplify report"}
           >
+            {loading && (
+              <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+              </svg>
+            )}
             {loading ? "Simplifying…" : "Simplify"}
           </button>
         </div>
+
+        {error && (
+          <div className="mt-4 rounded-md border border-red-300 bg-red-50 p-4 text-sm text-red-700 dark:border-red-700 dark:bg-red-900/20 dark:text-red-300">
+            <div className="font-semibold">Error</div>
+            <p>{error}</p>
+          </div>
+        )}
 
         <div className="mt-2 flex items-center gap-3">
           <label className="flex items-center gap-2 text-sm">
@@ -145,6 +172,7 @@ export default function Home() {
               type="checkbox"
               checked={useAi}
               onChange={(e) => setUseAi(e.target.checked)}
+              aria-label="Enable AI assistant"
             />
             Use AI assistant (if enabled)
           </label>
@@ -194,10 +222,19 @@ export default function Home() {
             ))}
 
             <div className="rounded-lg border border-zinc-200 dark:border-zinc-800 p-4">
-              <h2 className="text-xl font-medium">Questions for your doctor</h2>
-              <ul className="mt-2 list-disc pl-5 text-sm">
+              <div className="flex items-center justify-between mb-2">
+                <h2 className="text-xl font-medium">Questions for your doctor</h2>
+                <button
+                  onClick={() => copyToClipboard(data.questions.join("\n"))}
+                  className="text-xs px-2 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
+                  title="Copy questions to clipboard"
+                >
+                  {copied ? "Copied!" : "Copy"}
+                </button>
+              </div>
+              <ul className="mt-2 list-disc pl-5 text-sm space-y-1">
                 {data.questions.map((q, i) => (
-                  <li key={i} className="mt-1">{q}</li>
+                  <li key={i}>{q}</li>
                 ))}
               </ul>
             </div>
