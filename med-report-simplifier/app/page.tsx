@@ -91,7 +91,6 @@ export default function Home() {
       <div className="relative overflow-hidden bg-cyan-100 text-gray-900 py-16 px-6 shadow-lg border-b border-cyan-200">
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-100 via-blue-100 to-teal-100 opacity-70" aria-hidden="true" />
         <div className="relative mx-auto max-w-4xl">
-        <div className="relative mx-auto max-w-4xl">
           <div className="inline-block px-4 py-1 bg-white/90 backdrop-blur-sm text-blue-700 rounded-full text-sm font-medium mb-4 shadow-sm">
             ✨ Powered by AI
           </div>
@@ -324,6 +323,41 @@ Glucose (Fasting): 92 mg/dL"
           </section>
         )}
       </main>
+
+      {/* Footer */}
+      <footer className="bg-gradient-to-r from-cyan-50 to-blue-50 dark:from-gray-800 dark:to-gray-800 border-t border-cyan-200 dark:border-gray-700 mt-16 py-12 px-6">
+        <div className="mx-auto max-w-4xl">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8">
+            <div>
+              <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-3">About</h3>
+              <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                Simplify medical reports into plain language instantly.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-3">Features</h3>
+              <ul className="space-y-1 text-xs text-gray-600 dark:text-gray-400">
+                <li>📊 Lab analysis</li>
+                <li>🤖 AI summaries</li>
+                <li>💬 Doctor questions</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-3">Legal</h3>
+              <ul className="space-y-1 text-xs text-gray-600 dark:text-gray-400">
+                <li>⚠️ Not medical advice</li>
+                <li>👨‍⚕️ Consult doctor</li>
+                <li>🔒 Your privacy</li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-cyan-200 dark:border-gray-700 pt-6 text-center">
+            <p className="text-xs text-gray-600 dark:text-gray-400">
+              © 2025 Med-Report Simplifier. For understanding only.
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
