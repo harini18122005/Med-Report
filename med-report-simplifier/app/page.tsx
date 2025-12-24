@@ -88,9 +88,11 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-cyan-50 to-teal-50 dark:from-gray-900 dark:via-gray-900 dark:to-blue-900">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-cyan-50 via-blue-100 to-teal-100 text-gray-900 py-16 px-6 shadow-lg border-b border-cyan-200">
-        <div className="mx-auto max-w-4xl">
-          <div className="inline-block px-4 py-1 bg-white/80 backdrop-blur-sm text-blue-700 rounded-full text-sm font-medium mb-4 shadow-sm">
+      <div className="relative overflow-hidden bg-cyan-100 text-gray-900 py-16 px-6 shadow-lg border-b border-cyan-200">
+        <div className="absolute inset-0 bg-gradient-to-r from-cyan-100 via-blue-100 to-teal-100 opacity-70" aria-hidden="true" />
+        <div className="relative mx-auto max-w-4xl">
+        <div className="relative mx-auto max-w-4xl">
+          <div className="inline-block px-4 py-1 bg-white/90 backdrop-blur-sm text-blue-700 rounded-full text-sm font-medium mb-4 shadow-sm">
             ✨ Powered by AI
           </div>
           <h1 className="text-5xl sm:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-700 to-purple-700 bg-clip-text text-transparent">
