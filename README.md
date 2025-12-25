@@ -1,6 +1,8 @@
 # 🩺 Med-Report Simplifier  
 **Making medical reports easy to understand for everyone**
 
+🌐 **Live Demo:** https://med-report-simplifier.vercel.app/
+
 ---
 
 ## 📌 Problem
@@ -16,6 +18,35 @@ Medical literacy is a global issue, and misunderstanding reports can lead to unn
 
 The tool does **not diagnose diseases**.  
 Instead, it focuses on clarity, understanding, and preparing patients for better conversations with their doctors.
+
+---
+
+## 🤖 Enable AI Assistant
+
+To unlock AI-powered summaries and enhanced question generation:
+
+1. **Get OpenAI API Key:**
+   - Visit https://platform.openai.com/api-keys
+   - Create an account or sign in
+   - Click "Create new secret key"
+   - Copy your key (starts with `sk-...`)
+
+2. **Local Development:**
+   ```bash
+   cd med-report-simplifier
+   cp .env.example .env
+   # Edit .env and add:
+   OPENAI_API_KEY=sk-your-actual-key-here
+   npm run dev:local
+   ```
+
+3. **Vercel Deployment:**
+   - Go to your Vercel project dashboard
+   - Settings → Environment Variables
+   - Add: `OPENAI_API_KEY` = `sk-your-key`
+   - Redeploy the project
+
+**Note:** AI features are optional. The app works fully without an API key using built-in explanations.
 
 ---
 
