@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type ApiItem = {
   term: string;
@@ -33,6 +33,30 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const [useAi, setUseAi] = useState<boolean>(true);
+  const [sampleName, setSampleName] = useState("");
+  const [customSamples, setCustomSamples] = useState<{ name: string; text: string }[]>([]);
+
+  // Load any saved samples from localStorage on first render.
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem("custom-samples");
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) setCustomSamples(parsed);
+      }
+    } catch {
+      // ignore parsing errors
+    }
+  }, []);
+
+  // Persist samples when they change.
+  useEffect(() => {
+    try {
+      localStorage.setItem("custom-samples", JSON.stringify(customSamples));
+    } catch {
+      // ignore storage errors
+    }
+  }, [customSamples]);
 
   async function copyToClipboard(text: string) {
     try {
@@ -42,6 +66,26 @@ export default function Home() {
     } catch {
       alert("Failed to copy");
     }
+  }
+
+  function saveSample() {
+    const name = sampleName.trim();
+    const body = text.trim();
+    if (!name || !body) return;
+    setCustomSamples((prev) => {
+      const filtered = prev.filter((s) => s.name.toLowerCase() !== name.toLowerCase());
+      return [...filtered, { name, text: body }];
+    });
+    setSampleName("");
+  }
+
+  function loadSample(name: string) {
+    const sample = customSamples.find((s) => s.name === name);
+    if (sample) setText(sample.text);
+  }
+
+  function deleteSample(name: string) {
+    setCustomSamples((prev) => prev.filter((s) => s.name !== name));
   }
 
   async function onSubmit() {
@@ -156,6 +200,66 @@ Glucose (Fasting): 92 mg/dL"
                   <span className="text-green-600 dark:text-green-400 font-medium">✓ Ready to analyze</span>
                 </div>
               )}
+
+              {/* Custom sample saver */}
+              <div className="mt-4 sm:mt-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50/70 dark:bg-gray-900/50 p-3 sm:p-4">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex items-center gap-2 text-sm font-semibold text-gray-800 dark:text-gray-100">
+                    <span className="text-lg" aria-hidden="true">🧪</span>
+                    <span>Save your own sample</span>
+                  </div>
+                  <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+                    <input
+                      type="text"
+                      value={sampleName}
+                      onChange={(e) => setSampleName(e.target.value)}
+                      placeholder="Sample name (e.g., Mom checkup)"
+                      className="w-full sm:w-56 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                    <div className="flex gap-2">
+                      <button
+                        type="button"
+                        onClick={saveSample}
+                        className="px-3 sm:px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 active:scale-95 transition"
+                      >
+                        Save sample
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setText("")}
+                        className="px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 active:scale-95 transition"
+                      >
+                        Clear
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {customSamples.length === 0 && (
+                    <span className="text-xs text-gray-500">No saved samples yet. Add a name and click "Save sample".</span>
+                  )}
+                  {customSamples.map((sample) => (
+                    <div key={sample.name} className="flex items-center gap-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full px-3 py-1 shadow-sm">
+                      <button
+                        type="button"
+                        onClick={() => loadSample(sample.name)}
+                        className="text-xs font-semibold text-blue-700 dark:text-blue-300 hover:underline"
+                      >
+                        {sample.name}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => deleteSample(sample.name)}
+                        className="text-xs text-gray-400 hover:text-red-500"
+                        aria-label={`Delete sample ${sample.name}`}
+                      >
+                        ✕
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
             <div className="grid gap-4">
