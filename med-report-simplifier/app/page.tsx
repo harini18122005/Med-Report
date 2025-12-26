@@ -32,7 +32,7 @@ export default function Home() {
   const [data, setData] = useState<ApiResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
-  const [useAi, setUseAi] = useState<boolean>(false);
+  const [useAi, setUseAi] = useState<boolean>(true);
 
   async function copyToClipboard(text: string) {
     try {
