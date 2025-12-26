@@ -166,22 +166,75 @@ export default function Home() {
                   <span className="text-2xl" aria-hidden="true">📋</span>
                   <span>Paste Your Report</span>
                 </label>
-                <button
-                  type="button"
-                  onClick={() =>
-                    setText([
-                      "Hemoglobin: 12.8 g/dL", "WBC: 6.1 10^9/L", "Platelets: 220 10^9/L",
-                      "Glucose (Fasting): 92 mg/dL", "Total Cholesterol: 182 mg/dL", "LDL: 110 mg/dL",
-                      "HDL: 50 mg/dL", "Triglycerides: 140 mg/dL", "ALT: 23 U/L", "AST: 19 U/L",
-                      "TSH: 2.1 mIU/L", "Creatinine: 0.9 mg/dL", "BUN: 14 mg/dL",
-                      "Sodium: 140 mmol/L", "Potassium: 4.2 mmol/L", "Calcium: 9.2 mg/dL",
-                    ].join("\n"))
-                  }
-                  className="text-xs sm:text-sm px-3 sm:px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:from-blue-600 hover:to-purple-600 active:scale-95 transition-all shadow-md hover:shadow-lg transform hover:scale-105 whitespace-nowrap font-medium"
-                  aria-label="Load sample medical report"
-                >
-                  ✨ Try Sample
-                </button>
+                <div className="flex flex-wrap gap-2 w-full sm:w-auto">
+                  <select
+                    onChange={(e) => {
+                      const samples: { [key: string]: string } = {
+                        healthy: [
+                          "Hemoglobin: 12.8 g/dL", "WBC: 6.1 10^9/L", "Platelets: 220 10^9/L",
+                          "Glucose (Fasting): 92 mg/dL", "Total Cholesterol: 182 mg/dL", "LDL: 110 mg/dL",
+                          "HDL: 50 mg/dL", "Triglycerides: 140 mg/dL", "ALT: 23 U/L", "AST: 19 U/L",
+                          "TSH: 2.1 mIU/L", "Creatinine: 0.9 mg/dL", "BUN: 14 mg/dL",
+                          "Sodium: 140 mmol/L", "Potassium: 4.2 mmol/L", "Calcium: 9.2 mg/dL",
+                        ].join("\n"),
+                        diabetic: [
+                          "Glucose (Fasting): 145 mg/dL",
+                          "Hemoglobin A1C: 8.5%",
+                          "Total Cholesterol: 220 mg/dL",
+                          "LDL: 150 mg/dL",
+                          "HDL: 35 mg/dL",
+                          "Triglycerides: 280 mg/dL",
+                          "Creatinine: 1.1 mg/dL",
+                          "BUN: 22 mg/dL",
+                          "Sodium: 138 mmol/L",
+                          "Potassium: 4.8 mmol/L",
+                        ].join("\n"),
+                        anemia: [
+                          "Hemoglobin: 10.2 g/dL",
+                          "Hematocrit: 32%",
+                          "WBC: 5.8 10^9/L",
+                          "Platelets: 180 10^9/L",
+                          "Iron: 40 μg/dL",
+                          "Ferritin: 12 ng/mL",
+                          "B12: 200 pg/mL",
+                          "Folate: 3 ng/mL",
+                        ].join("\n"),
+                        heart: [
+                          "Total Cholesterol: 280 mg/dL",
+                          "LDL: 200 mg/dL",
+                          "HDL: 30 mg/dL",
+                          "Triglycerides: 350 mg/dL",
+                          "AST: 45 U/L",
+                          "ALT: 52 U/L",
+                          "Creatinine: 1.3 mg/dL",
+                          "Potassium: 5.2 mmol/L",
+                          "Sodium: 135 mmol/L",
+                        ].join("\n"),
+                        thyroid: [
+                          "TSH: 8.5 mIU/L",
+                          "Free T4: 0.7 ng/dL",
+                          "Free T3: 2.1 pg/mL",
+                          "Hemoglobin: 11.5 g/dL",
+                          "Cholesterol: 250 mg/dL",
+                          "Glucose: 105 mg/dL",
+                          "Weight gain indicators: High",
+                        ].join("\n"),
+                      };
+                      if (e.target.value && samples[e.target.value]) {
+                        setText(samples[e.target.value]);
+                      }
+                      e.target.value = "";
+                    }}
+                    className="text-xs sm:text-sm px-3 sm:px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white cursor-pointer hover:border-blue-500 transition"
+                  >
+                    <option value="">📌 Load Sample...</option>
+                    <option value="healthy">✅ Healthy Checkup</option>
+                    <option value="diabetic">🍬 Diabetic Concern</option>
+                    <option value="anemia">🩸 Anemia Case</option>
+                    <option value="heart">❤️ Heart Health</option>
+                    <option value="thyroid">🦋 Thyroid Issue</option>
+                  </select>
+                </div>
               </div>
               <textarea
                 className="w-full h-40 sm:h-48 rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 p-3 sm:p-4 text-sm sm:text-base focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 dark:focus:ring-blue-900 transition-all resize-none"
